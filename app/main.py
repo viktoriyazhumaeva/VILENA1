@@ -22,3 +22,18 @@ def admin():
     database = Mebel.query.order_by(Mebel.id).all()
     return render_template('admin.html', title='Вход', database=database)
 
+
+@app.route('/add', methods=['POST', 'GET'])
+def database():
+    if request.method == "POST":
+        name = request.form['name']
+        category = request.form['category']
+        count = request.form['count']
+        color = request.form['color']
+        height = request.form['height']
+        weidth = request.form['weidth']
+        dep = request.form['dep']
+        postav = request.form['postav']
+        image = request.form['image']
+        dop = request.form['dop']
+
