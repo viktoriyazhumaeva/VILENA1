@@ -83,3 +83,16 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
+@app.route('/admin/<int:id>/delete')
+def delete(id):
+    article = Mebel.query.get_or_404(id)
+
+    try:
+        db.session.delete(article)
+        db.session.commit()
+        return redirect('/admin')
+    except:
+        return "При удалении произошла ошибка!"
+
+
+
