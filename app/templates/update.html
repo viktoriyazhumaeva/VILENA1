@@ -89,3 +89,20 @@
                <option>Германия</option>
                <option>Китай</option>
            </select><br>
+
+
+            <div class="form-group">
+            <label>Дополнительно</label>
+            <textarea class="form-control" id="dop" rows="3" name="dop">{{article.dop}}</textarea>
+
+         </div>
+
+        <label>URL изображения</label>
+         <input type="text" name="image" id="image" value="{{article.image}}" class="form-control"><br>
+
+        <input type="submit" class="btn btn-primary" value="Обновить">
+
+    </div>
+    </form>
+
+{% endblock %}
