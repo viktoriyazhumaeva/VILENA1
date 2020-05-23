@@ -8,6 +8,10 @@ from wtforms.validators import DataRequired
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mebel.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg'])
+db = SQLAlchemy(app)
+
 
 
 class LoginForm(FlaskForm):
