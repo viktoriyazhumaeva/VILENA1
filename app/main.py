@@ -36,6 +36,10 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Запомнить пароль')
     submit = SubmitField('Войти')
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 
 @app.route('/admin')
 def admin():
