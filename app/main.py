@@ -40,4 +40,26 @@ def database():
         article = Mebel(name=name, category=category, count=count, color=color, height=height, weidth=weidth,
                         dep=dep, postav=postav, image=image, dop=dop)
 
+        try:
+            db.session.add(article)
+            db.session.commit()
+            return redirect('/admin')
+        except:
+            print('При добавлении произошла ошибка!')
+        else:
+            return render_template('dobavit.html', title="Добавить запись")
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    check_password = 'admin123'
+    check_username = 'vilena'
+    if form.validate_on_submit() and request.method == 'POST':
+        if form.password.data == check_password and form.username.data == check_username:
+            return redirect('/admin')
+        else:
+            return 'Error'
+    return render_template('login.html', title='Авторизация', form=form)
+
 
