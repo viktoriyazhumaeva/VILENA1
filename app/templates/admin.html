@@ -30,7 +30,45 @@
      </nav>
 </header>
 
+    <h1>Все записи</h1>
 
+    <input type="submit" class="btn btn-primary" value="Добавить запись" onclick="location.href='/add'">
+
+    {% if database|length > 0 %}
+
+        {% for el in database %}
+        <div class="alert alert-info">
+            <b>{{el.id}}</b>
+            <label>Категория:</label>
+            {{el.category}}<br>
+            <label>Наименование:</label>
+            {{el.name}}
+            <label>Стоимость:</label>
+            {{el.count}}
+            <label>руб.</label><br>
+            <label>Высота:</label>
+            {{el.height}}
+            <label>Ширина:</label>
+            {{el.weidth}}
+            <label>Глубина:</label>
+            {{el.dep}}<br>
+            <label>Цвет:</label>
+            {{el.color}}
+            <label>Поставщик:</label>
+            {{el.postav}}<br>
+            <label>Доп.инф.:</label>
+            {{el.dop}}
+            <br>
+
+            <a href="/admin/{{el.id}}/delete" class="btn btn-danger">Удалить</a>
+            <a href="/admin/{{el.id}}/update" class="btn btn-success">Редактировать</a>
+
+        </div>
+        {% endfor %}
+
+    {% else %}
+        <h1>На данный момент нет записей:(</h1>
+    {% endif %}
 
 
 
