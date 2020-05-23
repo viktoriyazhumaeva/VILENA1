@@ -39,3 +39,39 @@
                }
 
         </style>
+        </nav>
+</header>
+<h1>Новое изделие</h1>
+    <form method="POST">
+        <label>Наименование</label>
+        <input type="text" name="name" id="name" class="form-control"><br>
+
+         <div class="form-group">
+            <label>Выберете категорию товара</label>
+                 <div class="form-check">
+                         <input class="form-check-input" type="radio" name="category" id="armchair" value="Кресло" checked>
+                         <label class="form-check-label" for="armchair">Кресло</label>
+                 </div>
+
+                 <div class="form-check">
+                         <input class="form-check-input" type="radio" name="category" id="sofa" value="Диван">
+                         <label class="form-check-label" for="sofa">Диван</label>
+                 </div>
+
+                 <div class="form-check">
+                          <input class="form-check-input" type="radio" name="category" id="bed" value="Кровать">
+                          <label class="form-check-label" for="bed">Кровать</label>
+                 </div>
+         </div>
+
+        <br>
+         <label>Стоимость</label>
+         <input type="text" name="count" id="count" class="form-control"><br>
+
+         <label>Цвет</label>
+         <input type="text" name="color" id="color" class="form-control"><br>
+
+         <label>Параметры:</label><br>
+         <input type="text" name="height" id="height" class="form-control" value="Высота"><br>
+         <input type="text" name="weidth" id="weidth" class="form-control" value="Ширина"><br>
+         <input type="text" name="dep" id="dep" class="form-control" value="Глубина"><br>
