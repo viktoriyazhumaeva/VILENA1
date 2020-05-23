@@ -40,4 +40,14 @@ def database():
         article = Mebel(name=name, category=category, count=count, color=color, height=height, weidth=weidth,
                         dep=dep, postav=postav, image=image, dop=dop)
 
+        try:
+            db.session.add(article)
+            db.session.commit()
+            return redirect('/admin')
+        except:
+            print('При добавлении произошла ошибка!')
+        else:
+            return render_template('dobavit.html', title="Добавить запись")
+
+
 
