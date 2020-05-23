@@ -87,6 +87,31 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
+@app.route('/admin/<int:id>/update',  methods=['GET', 'POST'])
+def update(id):
+    article = Mebel.query.get(id)
+    if request.method == 'POST':
+        article.name = request.form['name']
+        article.category = request.form['category']
+        article.count = request.form['count']
+        article.color = request.form['color']
+        article.height = request.form['height']
+        article.weidth = request.form['weidth']
+        article.dep = request.form['dep']
+        article.postav = request.form['postav']
+        article.image = request.form['image']
+        article.dop = request.form['dop']
+
+        try:
+            db.session.commit()
+            return redirect('/admin')
+        except:
+            return "При редактировании произошла ошибка!"
+
+    else:
+        return render_template("update.html", article=article, title="Редактирование")
+
+
 @app.route('/admin/<int:id>/delete')
 def delete(id):
     article = Mebel.query.get_or_404(id)
