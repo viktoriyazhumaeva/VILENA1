@@ -50,4 +50,16 @@ def database():
             return render_template('dobavit.html', title="Добавить запись")
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    check_password = 'admin123'
+    check_username = 'vilena'
+    if form.validate_on_submit() and request.method == 'POST':
+        if form.password.data == check_password and form.username.data == check_username:
+            return redirect('/admin')
+        else:
+            return 'Error'
+    return render_template('login.html', title='Авторизация', form=form)
+
 
