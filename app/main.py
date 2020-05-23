@@ -109,6 +109,11 @@ def armchair():
     article = Mebel.query.all()
     return render_template('armchair.html', title='Кресла', article=article)
 
+@app.route('/bed')
+def bed():
+    article = Mebel.query.all()
+    return render_template('bed.html', title='Кровать', article=article)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
