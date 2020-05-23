@@ -99,5 +99,11 @@ def delete(id):
         return "При удалении произошла ошибка!"
 
 
+@app.route('/sofa')
+def sofa():
+    article = Mebel.query.all()
+    return render_template('sofa.html', title='Диваны', article=article)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
