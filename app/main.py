@@ -12,6 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg'])
 db = SQLAlchemy(app)
 
+
 class Mebel(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable=True)
@@ -29,12 +30,12 @@ class Mebel(db.Model):
         return '<Mebel %r>' %self.id
 
 
-
 class LoginForm(FlaskForm):
     username = StringField('Логин', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember_me = BooleanField('Запомнить пароль')
     submit = SubmitField('Войти')
+
 
 @app.route('/')
 def index():
@@ -129,10 +130,12 @@ def sofa():
     article = Mebel.query.all()
     return render_template('sofa.html', title='Диваны', article=article)
 
+
 @app.route('/armchair')
 def armchair():
     article = Mebel.query.all()
     return render_template('armchair.html', title='Кресла', article=article)
+
 
 @app.route('/bed')
 def bed():
