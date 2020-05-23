@@ -12,6 +12,22 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg'])
 db = SQLAlchemy(app)
 
+class Mebel(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(100), nullable=True)
+    category = db.Column(db.Text(20), nullable=True)
+    count = db.Column(db.Integer, nullable=True)
+    color = db.Column(db.String(50), nullable=True)
+    height = db.Column(db.Integer, nullable=True)
+    weidth = db.Column(db.Integer, nullable=True)
+    dep = db.Column(db.Integer, nullable=True)
+    postav = db.Column(db.String(50), nullable=True)
+    image = db.Column(db.Text)
+    dop = db.Column(db.Text)
+
+    def __repr__(self):
+        return '<Mebel %r>' %self.id
+
 
 
 class LoginForm(FlaskForm):
