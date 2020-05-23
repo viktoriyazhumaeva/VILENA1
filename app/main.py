@@ -37,3 +37,7 @@ def database():
         image = request.form['image']
         dop = request.form['dop']
 
+        article = Mebel(name=name, category=category, count=count, color=color, height=height, weidth=weidth,
+                        dep=dep, postav=postav, image=image, dop=dop)
+
+
