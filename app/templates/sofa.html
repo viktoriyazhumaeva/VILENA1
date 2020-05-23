@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <link crossorigin="anonymous"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              rel="stylesheet">
+        <link rel="stylesheet"/>
+        <style>
+            body {
+                background-color: Beige;
+            }
+            h1{
+                text-align: center;
+            }
+            img{
+                width: 370px;
+                height: 300px;
+                position: relative;
+                left: 700px;
+                top: -278px;
+            }
+            div{
+                height: 300px;
+                width: 1020px;
+            }
+            label{
+                font-weight: 600;
+                color: Black;
+            }
+            h3{
+               color: Black;
+            }
+            input{
+                position: relative;
+                left: 990px;
+                top: -40px;
+            }
+        </style>
+    </nav>
+</header>
+
+<h1>Диваны</h1>
+
+   <input type="submit" class="btn btn-primary btn-lg" value="Кресла ->" onclick="location.href='/armchair'">
+
+ {% for el in article %}
+    {% if el.category == "Диван" %}
+    <div class="alert alert-info">
+        <h3>
+            #{{el.id}}
+            "{{el.name}}"
+        </h3>
+            <label>Стоимость:</label>
+            {{el.count}}
+            <label>руб.</label><br>
+            <label>Высота:</label>
+            {{el.height}}<br>
+            <label>Ширина:</label>
+            {{el.weidth}}<br>
+            <label>Глубина:</label>
+            {{el.dep}}<br>
+            <label>Цвет:</label>
+            {{el.color}}<br>
+            <label>Поставщик:</label>
+            {{el.postav}}<br>
+            <label>Доп.инф.:</label>
+            {{el.dop}}
+            <br>
+        <img src="{{ el.image }}">
+    </div>
+
+{% endif %}
+{% endfor %}
+{% endblock %}
