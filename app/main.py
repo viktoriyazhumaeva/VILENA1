@@ -16,3 +16,9 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Запомнить пароль')
     submit = SubmitField('Войти')
 
+
+@app.route('/admin')
+def admin():
+    database = Mebel.query.order_by(Mebel.id).all()
+    return render_template('admin.html', title='Вход', database=database)
+
