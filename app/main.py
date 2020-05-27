@@ -125,6 +125,25 @@ def delete(id):
         return "При удалении произошла ошибка!"
 
 
+@app.route('/admin/only_sofa')
+def only_sofa():
+    database = Mebel.query.filter_by(category ="Диван").all()
+
+    return render_template('admin.html', title='Диваны', database=database)
+
+@app.route('/admin/only_armchair')
+def only_armchair():
+    database = Mebel.query.filter_by(category ="Кресло").all()
+
+    return render_template('admin.html', title='Кресла', database=database)
+
+@app.route('/admin/only_bed')
+def only_bed():
+    database = Mebel.query.filter_by(category ="Кровать").all()
+
+    return render_template('admin.html', title='Кровати', database=database)
+
+
 @app.route('/sofa')
 def sofa():
     article = Mebel.query.all()
