@@ -9,6 +9,7 @@
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               rel="stylesheet">
         <link rel="stylesheet"/>
+
         <style>
             body {
                 background-color: Beige;
@@ -24,6 +25,22 @@
                 left: 1000px;
                 top: -40px;
             }
+            img{
+                width: 370px;
+                height: 300px;
+                position: relative;
+                left: 700px;
+                top: -342px;
+            }
+            p{
+                position: relative;
+                top: -50px;
+            }
+            f{
+                position: relative;
+                left: -150px;
+                top: -30px;
+            }
 
         </style>
         <a class="navbar-brand" style="color:Maroon;">Добро пожаловать, Вилена!</a>
@@ -31,45 +48,66 @@
 </header>
 
     <h1>Все записи</h1>
+<input type="submit" class="btn btn-primary" value="Добавить запись" onclick="location.href='/add'">
 
-    <input type="submit" class="btn btn-primary" value="Добавить запись" onclick="location.href='/add'">
+<f>
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+       <div class="btn-group" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Фильтровать по категории...
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="/admin">Все записи</a>
+      <a class="dropdown-item" href="/admin/only_sofa">Диваны</a>
+      <a class="dropdown-item" href="/admin/only_armchair">Кресла</a>
+      <a class="dropdown-item" href="/admin/only_bed">Кровати</a>
+    </div>
+  </div>
+</div>
+</f>
+
+<p>
 
     {% if database|length > 0 %}
 
         {% for el in database %}
+
         <div class="alert alert-info">
             <b>{{el.id}}</b>
             <label>Категория:</label>
             {{el.category}}<br>
             <label>Наименование:</label>
-            {{el.name}}
+            {{el.name}}<br>
             <label>Стоимость:</label>
             {{el.count}}
             <label>руб.</label><br>
             <label>Высота:</label>
-            {{el.height}}
+            {{el.height}}<br>
             <label>Ширина:</label>
-            {{el.weidth}}
+            {{el.weidth}}<br>
             <label>Глубина:</label>
             {{el.dep}}<br>
             <label>Цвет:</label>
-            {{el.color}}
+            {{el.color}}<br>
             <label>Поставщик:</label>
             {{el.postav}}<br>
             <label>Доп.инф.:</label>
             {{el.dop}}
             <br>
 
+
             <a href="/admin/{{el.id}}/delete" class="btn btn-danger">Удалить</a>
             <a href="/admin/{{el.id}}/update" class="btn btn-success">Редактировать</a>
 
         </div>
+        <img src="{{el.image}}">
         {% endfor %}
 
     {% else %}
         <h1>На данный момент нет записей:(</h1>
     {% endif %}
 
+</p>
 
 
 {% endblock %}
