@@ -71,7 +71,7 @@ def database():
             return redirect('/admin')
         except:
             print('При добавлении произошла ошибка!')
-        else:
+    else:
             return render_template('dobavit.html', title="Добавить запись")
 
 
